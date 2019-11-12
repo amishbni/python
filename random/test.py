@@ -28,6 +28,7 @@ def main():
 
     print(f"array: {array}")
     print(f"probability: {probability}")
+    print(f"size: {total_count}")
 
     print()
 
