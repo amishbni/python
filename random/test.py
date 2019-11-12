@@ -13,6 +13,6 @@ def test(array, total_count, probability):
 
 print(test(
     ['a', 'b', 'c', 'd'],
-    1000,
+    1000000,
     [0.7, 0.1, 0.1, 0.1]
 ))
