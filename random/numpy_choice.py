@@ -1,12 +1,11 @@
 from numpy.random import choice
 from collections import Counter
 
-total_count = 100000
+def select(array, total_count, probability):
+    probability_dict = {}
+    rand_items = choice(array, total_count, p=probability)
+    items_counter = Counter(rand_items)
 
-items = ['a', 'b', 'c', 'd', 'e']
-probability = [0.4, 0.3, 0.2, 0.05, 0.05]
-rand_items = choice(items, total_count, p=probability)
-items_counter = Counter(rand_items)
-
-for item, count in items_counter.most_common():
-    print(f"{item}: {100 * count / total_count:.1f}%")
+    for item, count in items_counter.most_common():
+        probability_dict[item] = f"{100 * count / total_count:.1f}%"
+    return probability_dict
