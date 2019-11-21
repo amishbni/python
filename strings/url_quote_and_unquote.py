@@ -1,4 +1,4 @@
-# example for the use of quoting and unquoting urls
+# Example for the use of quoting and unquoting URLs
 
 from urllib.parse import quote, unquote
 
