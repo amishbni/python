@@ -8,13 +8,13 @@ for data_type in data_types:
 print(type(None))
 
 # int data type
-print(f"2 + 4 is {2 + 4}")
-print(f"2 - 4 is {2 - 4}")
-print(f"2 * 4 is {2 * 4}")
-print(f"2 / 4 is {2 / 4}")
-print(f"2 // 4 is {2 // 4}")
-print(f"2 % 4 is {2 % 4}")
-print(f"2 ** 4 is {2 ** 4}")
+print(2 + 4)                            # 6
+print(2 - 4)                            # -2
+print(2 * 4)                            # 8
+print(2 / 4)                            # 0.5
+print(2 // 4)                           # 0
+print(2 % 4)                            # 2
+print(2 ** 4)                           # 16
 
 # float arithmetic
 one_tenth = .1
