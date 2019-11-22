@@ -3,9 +3,17 @@ data_types = [int, float, bool, str, list, tuple, set, dict]
 
 for data_type in data_types:
     print(data_type)
+                                        # <class 'int'>
+                                        # <class 'float'>
+                                        # <class 'bool'>
+                                        # <class 'str'>
+                                        # <class 'list'>
+                                        # <class 'tuple'>
+                                        # <class 'set'>
+                                        # <class 'dict'>
 
 # None, absence of a value
-print(type(None))
+print(type(None))                       # <class 'NoneType'>
 
 # int data type
 print(2 + 4)                            # 6
