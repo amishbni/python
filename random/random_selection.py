@@ -1,5 +1,5 @@
 from random import uniform
-from math import ceil
+from math import fsum
 
 def select(array, total_count, probability):
     probability_accumulative = []
@@ -9,9 +9,10 @@ def select(array, total_count, probability):
         last_element = probability_accumulative[i]
 
     result = []
+
     if(len(array) != len(probability)):
         raise ValueError("array and probability must have the same size.")
-    elif(ceil(sum(probability)) != 1):
+    elif(fsum(probability) != 1.0):
         raise ValueError("probabilities do not sum to 1.")
     else:
         for i in range(total_count):
