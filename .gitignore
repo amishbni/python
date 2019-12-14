@@ -6,3 +6,7 @@
 
 # pycache
 **/__pycache__
+
+# Dump folder
+/Boostan/dump
+
