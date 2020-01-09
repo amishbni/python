@@ -5,7 +5,9 @@ with open("test.txt", 'r') as input_file:
 
 stopwords = set(STOPWORDS)
 
-wc = WordCloud(background_color="white", max_words=2000, stopwords=stopwords, contour_width=3, contour_color="steelblue")
+wc = WordCloud(background_color="white", max_words=2000,
+        width=1024, height=1024,
+        stopwords=stopwords, contour_width=3, contour_color="steelblue")
 
 wc.generate(text)
 
