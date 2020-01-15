@@ -1,4 +1,6 @@
-from wordcloud import WordCloud, STOPWORDS
+from wordcloud import WordCloud
+from collections import Counter
+from pprint import pprint
 import sys, os
 
 args = sys.argv
@@ -10,15 +12,18 @@ if len(args) == 1:
 filepath = args[1]
 
 with open(filepath, 'r') as input_file:
-    text = input_file.read()
+    commands = input_file.read().split()
 
-stopwords = set(STOPWORDS)
+most_common = Counter(commands).most_common()
+freq = dict(most_common)
 
-wc = WordCloud(background_color="white", max_words=2000,
-        width=1024, height=1024,
-        stopwords=stopwords, contour_width=3, contour_color="steelblue")
+wc = WordCloud(
+    background_color="white",
+    max_words=2000,
+    width=2048, height=2048,
+    normalize_plurals=False)
 
-wc.generate(text)
+wc.generate_from_frequencies(freq)
 
 output_file_name = os.path.basename(os.path.normpath(filepath)).split('.')[0]
 
