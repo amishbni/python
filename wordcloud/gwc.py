@@ -25,7 +25,7 @@ wc = WordCloud(
 
 wc.generate_from_frequencies(freq)
 
-output_file_name = os.path.basename(os.path.normpath(filepath)).split('.')[0]
+output_file_name = f"{os.path.splitext(filepath)[0]}.png"
 
-wc.to_file(f"{output_file_name}.png")
+wc.to_file(output_file_name)
 
