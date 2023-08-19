@@ -10,8 +10,5 @@
 # Dump folder
 /Boostan/dump
 
-# example directory
-**/examples
-
 # PyCharm's .idea directory
 /.idea
