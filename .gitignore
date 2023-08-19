@@ -12,3 +12,6 @@
 
 # example directory
 **/examples
+
+# PyCharm's .idea directory
+/.idea
