@@ -61,6 +61,42 @@ class SinglyLinkedList:
 
         first_current.next, second_current.next = second_current.next, first_current.next
 
+    def swap_by_position(self, first, second):
+        if first == second:
+            return
+
+        first_previous = None
+        first_current = self.head
+        first_position = 0
+        while first_current and first_position != first:
+            first_previous = first_current
+            first_current = first_current.next
+            first_position += 1
+
+        second_previous = None
+        second_current = self.head
+        second_position = 0
+        while second_current and second_position != second:
+            second_previous = second_current
+            second_current = second_current.next
+            second_position += 1
+
+        if first_current is None or second_current is None:
+            return
+
+        if first_previous is None:
+            self.head = second_current
+        else:
+            first_previous.next = second_current
+
+        if second_previous is None:
+            self.head = first_current
+        else:
+            second_previous.next = first_current
+
+        first_current.next, second_current.next = second_current.next, first_current.next
+
+
     def delete_by_value(self, value):
         current_node = self.head
         if current_node and current_node.data == value:
@@ -156,5 +192,8 @@ if __name__ == "__main__":
     print("length: ", singly_linked_list.length(), end='. ')
     singly_linked_list.print()
     singly_linked_list.swap_by_value(0, 3)
+    print("length: ", singly_linked_list.length(), end='. ')
+    singly_linked_list.print()
+    singly_linked_list.swap_by_position(1, 4)
     print("length: ", singly_linked_list.length(), end='. ')
     singly_linked_list.print()
