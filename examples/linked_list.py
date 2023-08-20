@@ -140,12 +140,23 @@ class SinglyLinkedList:
         current_node = self.head
 
         while current_node:
-            next = current_node.next
+            next_node = current_node.next
             current_node.next = previous_node
             previous_node = current_node
-            current_node = next
+            current_node = next_node
 
         self.head = previous_node
+
+    def recursive_reverse(self):
+        def _recursive_reverse(previous_node, current_node):
+            if current_node is None:
+                return previous_node
+            next_node = current_node.next
+            current_node.next = previous_node
+            previous_node = current_node
+            current_node = next_node
+            return _recursive_reverse(previous_node, current_node)
+        self.head = _recursive_reverse(previous_node=None, current_node=self.head)
 
     def print(self, end='\n'):
         current_node = self.head
@@ -210,5 +221,8 @@ if __name__ == "__main__":
     print(f"len={singly_linked_list.length()}", end=' -> ')
     singly_linked_list.print()
     singly_linked_list.reverse()
+    print(f"len={singly_linked_list.length()}", end=' -> ')
+    singly_linked_list.print()
+    singly_linked_list.recursive_reverse()
     print(f"len={singly_linked_list.length()}", end=' -> ')
     singly_linked_list.print()
