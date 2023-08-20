@@ -135,6 +135,18 @@ class SinglyLinkedList:
         previous_node.next = current_node.next
         current_node = None
 
+    def reverse(self):
+        previous_node = None
+        current_node = self.head
+
+        while current_node:
+            next = current_node.next
+            current_node.next = previous_node
+            previous_node = current_node
+            current_node = next
+
+        self.head = previous_node
+
     def print(self, end='\n'):
         current_node = self.head
         while current_node:
@@ -195,5 +207,8 @@ if __name__ == "__main__":
     print(f"len={singly_linked_list.length()}", end=' -> ')
     singly_linked_list.print()
     singly_linked_list.swap_by_position(1, 4)
+    print(f"len={singly_linked_list.length()}", end=' -> ')
+    singly_linked_list.print()
+    singly_linked_list.reverse()
     print(f"len={singly_linked_list.length()}", end=' -> ')
     singly_linked_list.print()
