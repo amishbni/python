@@ -158,6 +158,42 @@ class SinglyLinkedList:
             return _recursive_reverse(previous_node, current_node)
         self.head = _recursive_reverse(previous_node=None, current_node=self.head)
 
+    def merge(self, linked_list):
+        first_current = self.head
+        second_current = linked_list.head
+        smallest = None
+
+        if first_current is None:
+            return second_current
+        if second_current is None:
+            return first_current
+
+        if first_current.data <= second_current.data:
+            smallest = first_current
+            first_current = smallest.next
+        else:
+            smallest = second_current
+            second_current = smallest.next
+        new_head = smallest
+
+        while first_current and second_current:
+            if first_current.data <= second_current.data:
+                smallest.next = first_current
+                smallest = first_current
+                first_current = smallest.next
+            else:
+                smallest.next = second_current
+                smallest = second_current
+                second_current = smallest.next
+
+        if first_current is None:
+            smallest.next = second_current
+        if second_current is None:
+            smallest.next = first_current
+
+        self.head = new_head
+        return self.head
+
     def print(self, end='\n'):
         current_node = self.head
         while current_node:
@@ -226,3 +262,18 @@ if __name__ == "__main__":
     singly_linked_list.recursive_reverse()
     print(f"len={singly_linked_list.length()}", end=' -> ')
     singly_linked_list.print()
+
+    first_list = SinglyLinkedList()
+    first_list.append(1)
+    first_list.append(3)
+    first_list.append(5)
+    first_list.append(10)
+
+    second_list = SinglyLinkedList()
+    second_list.append(2)
+    second_list.append(6)
+    second_list.append(7)
+
+    first_list.merge(second_list)
+    print(f"len={first_list.length()}", end=' -> ')
+    first_list.print()
