@@ -3,6 +3,10 @@ class Node:
         self.data = data
         self.next = None
 
+    def __repr__(self):
+        next = str(self.next.data) if self.next else "null"
+        return f"{self.data} -> {next}"
+
 
 class SinglyLinkedList:
     def __init__(self):
