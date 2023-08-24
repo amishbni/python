@@ -198,6 +198,20 @@ class SinglyLinkedList:
         self.head = new_head
         return self.head
 
+    def remove_duplicates(self):
+        current_node = self.head
+        previous_node = None
+        if current_node is None:
+            return
+        unique_values = set()
+        while current_node:
+            if current_node.data in unique_values:
+                previous_node.next = current_node.next
+            else:
+                unique_values.add(current_node.data)
+                previous_node = current_node
+            current_node = current_node.next
+
     def print(self, end='\n'):
         current_node = self.head
         while current_node:
@@ -242,6 +256,9 @@ if __name__ == "__main__":
     singly_linked_list.append(4)
     print(f"len={singly_linked_list.recursive_length(singly_linked_list.head)}", end=' -> ')
     singly_linked_list.print()
+    singly_linked_list.append(4)
+    print(f"len={singly_linked_list.recursive_length(singly_linked_list.head)}", end=' -> ')
+    singly_linked_list.print()
     singly_linked_list.prepend(0)
     print(f"len={singly_linked_list.length()}", end=' -> ')
     singly_linked_list.print()
@@ -281,3 +298,12 @@ if __name__ == "__main__":
     first_list.merge(second_list)
     print(f"len={first_list.length()}", end=' -> ')
     first_list.print()
+
+    singly_linked_list.append(3)
+    singly_linked_list.append(1)
+    singly_linked_list.append(7)
+    print(f"len={singly_linked_list.length()}", end=' -> ')
+    singly_linked_list.print()
+    singly_linked_list.remove_duplicates()
+    print(f"len={singly_linked_list.length()}", end=' -> ')
+    singly_linked_list.print()
