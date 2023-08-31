@@ -15,7 +15,9 @@ def nlargest(n: int, iterable: Iterable, key=lambda x: x):
     return sorted([item[1] for item in min_heap], key=key, reverse=True)
 
 
-def most_common(n: int, filename: str, chunk_size=1024):
+def most_common(n: int, filename: str, chunk_size=1024, stop_words: Iterable = None):
+    if stop_words is None:
+        stop_words = []
     elements_count = defaultdict(int)
     Element = namedtuple("Element", "value count")
 
@@ -26,6 +28,9 @@ def most_common(n: int, filename: str, chunk_size=1024):
 
             for word in words:
                 elements_count[word] += 1
+
+    for word in stop_words:
+        elements_count.pop(word, None)
 
     top_n = [
         Element(value=item[0], count=item[1])
@@ -38,7 +43,6 @@ def main():
     n = 10
     filename = "example.txt"
     top_n = most_common(n=n, filename=filename)
-    print(top_n)
 
     print(f"Top {n} elements:")
     for element in top_n:
