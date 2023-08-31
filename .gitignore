@@ -12,3 +12,6 @@
 
 # PyCharm's .idea directory
 /.idea
+
+# Text files
+*.txt
